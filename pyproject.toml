@@ -2,7 +2,6 @@
 name = "hikvision-isapi-py"
 
 description = "HIKVision ISAPI python library"
-dynamic = ["readme"]
 version = "0.1.6"
 
 
@@ -28,9 +27,6 @@ requires = ["setuptools>=61", "setuptools-scm"]
 
 include-package-data = true
 packages = ["hikvision_isapi"]
-
-[tool.setuptools.dynamic]
-readme = { file = ["README.txt"], content-type = "text/markdown" }
 
 ############### tbump ###############
 [tool.tbump]
