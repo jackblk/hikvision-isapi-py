@@ -1,11 +1,7 @@
 name: Publish to PyPi
 
 on:
-  push:
-    # branches:
-    #   - "main"
-    tags:
-      - "*"
+  release:
 
 jobs:
   build:
