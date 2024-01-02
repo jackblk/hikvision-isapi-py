@@ -1,4 +1,5 @@
 import logging
+import os
 from typing import Literal
 
 import requests
@@ -14,7 +15,13 @@ class HikvisionHeadersTemplate:
 
 
 class HikvisionClient:
-    def __init__(self, base_url: str, username: str, password: str) -> None:
+    def __init__(
+        self,
+        base_url: str,
+        username: str,
+        password: str,
+        verify_ssl: bool = True,
+    ) -> None:
         self.logger = logging.getLogger(__name__)
         if "" in [base_url, username, password]:
             raise ValueError(
@@ -25,6 +32,9 @@ class HikvisionClient:
         self.password = password
         self.base_url = base_url.strip("/")
         self.headers_template = {""}
+        self.verify_ssl = verify_ssl
+        if os.environ.get("VERIFY_SSL", "True").lower() != "true":
+            self.verify_ssl = False
 
     def _generate_auth(self) -> HTTPDigestAuth:
         return HTTPDigestAuth(username=self.username, password=self.password)
@@ -49,6 +59,7 @@ class HikvisionClient:
             url=url,
             data=data,
             json=json,
+            verify=self.verify_ssl,
         )
         # self.logger.debug(res.request.headers)
         # try:
