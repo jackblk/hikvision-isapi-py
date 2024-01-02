@@ -3,7 +3,7 @@ name = "hikvision-isapi-py"
 
 description = "HIKVision ISAPI python library"
 readme = "README.md"
-version = "1.1.0"
+version = "1.1.1"
 
 
 requires-python = ">=3.8"
@@ -35,7 +35,7 @@ packages = ["hikvision_isapi"]
 # github_url = "https://github.com/<user or organization>/<project>/"
 
 [tool.tbump.version]
-current = "1.1.0"
+current = "1.1.1"
 
 # Example of a semver regexp.
 # Make sure this matches current_version before
